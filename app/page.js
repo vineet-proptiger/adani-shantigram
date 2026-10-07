@@ -158,7 +158,7 @@ export default function MainHome() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/25"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 mt-4 sm:mt-6 md:mt-0">
