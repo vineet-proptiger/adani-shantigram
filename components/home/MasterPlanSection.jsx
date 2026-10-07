@@ -25,11 +25,11 @@ export default function MasterPlanSection({ setIsOpen }) {
 
         {/* Interactive Switch Buttons */}
         <div className="flex items-center justify-center mb-10 sm:mb-12">
-          <div className="inline-flex p-1.5 rounded-full bg-slate-100 border border-slate-200/80 shadow-inner">
+          <div className="inline-flex p-1.5 rounded-full bg-slate-100 border border-slate-200/80 shadow-inner max-w-full">
             <button
               type="button"
               onClick={() => setActiveTab('master')}
-              className={`flex items-center gap-2 px-7 sm:px-9 py-3 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 activeTab === 'master'
                   ? 'bg-[#00a4e4] text-white shadow-md shadow-[#00a4e4]/30'
                   : 'text-slate-600 hover:text-slate-900'
@@ -42,7 +42,7 @@ export default function MasterPlanSection({ setIsOpen }) {
             <button
               type="button"
               onClick={() => setActiveTab('floor')}
-              className={`flex items-center gap-2 px-6 sm:px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 activeTab === 'floor'
                   ? 'bg-[#00a4e4] text-white shadow-md shadow-[#00a4e4]/30'
                   : 'text-slate-600 hover:text-slate-900'
@@ -72,13 +72,13 @@ export default function MasterPlanSection({ setIsOpen }) {
                 />
                 
                 {/* Overlay with Lock and Unlock CTA */}
-                <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-black/40">
-                  <div className="w-12 h-12 rounded-full bg-white text-[#00a4e4] flex items-center justify-center text-lg shadow-xl">
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] flex flex-col items-center justify-center gap-2.5 sm:gap-3 transition-colors group-hover:bg-black/40 px-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-[#00a4e4] flex items-center justify-center text-base sm:text-lg shadow-xl">
                     <i className="fa-solid fa-lock" />
                   </div>
-                  <span className="bg-white text-slate-900 px-5 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-xl flex items-center gap-2 group-hover:bg-[#00a4e4] group-hover:text-white transition-all duration-200">
-                    <i className="fa-solid fa-file-arrow-down text-[#00a4e4] group-hover:text-white" />
-                    Click to Unlock High-Res Master Plan
+                  <span className="bg-white text-slate-900 px-4 sm:px-7 py-2.5 sm:py-3 rounded-full text-[11px] sm:text-sm font-bold shadow-xl flex items-center gap-2 group-hover:bg-[#00a4e4] group-hover:text-white transition-all duration-200 max-w-[94%] text-center">
+                    <i className="fa-solid fa-file-arrow-down text-[#00a4e4] group-hover:text-white shrink-0" />
+                    <span>Click to Unlock High-Res Master Plan</span>
                   </span>
                 </div>
               </div>

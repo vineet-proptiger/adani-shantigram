@@ -166,15 +166,15 @@ export default function MainHome() {
           {/* Left Content */}
           <div className="text-left max-w-2xl">
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#00a4e4]/20 border border-[#00a4e4]/40 backdrop-blur-md px-3.5 py-1.5 rounded-full mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#00a4e4] animate-pulse shrink-0"></span>
-              <span className="text-[#33b8eb] text-xs sm:text-[13px] font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#00a4e4]/20 border border-[#00a4e4]/40 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full mb-3.5 sm:mb-4 max-w-full">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#00a4e4] animate-pulse shrink-0"></span>
+              <span className="text-[#33b8eb] text-[10.5px] sm:text-xs md:text-[13px] font-bold uppercase tracking-wider leading-tight">
                 Gujarat&apos;s Largest Integrated Township • SG Highway
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.15] mb-4 drop-shadow-md">
+            <h1 className="text-[26px] sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.18] mb-3.5 sm:mb-4 drop-shadow-md">
               Welcome to Adani <br className="hidden sm:inline" />
               <span className="text-[#33b8eb]">Shantigram</span> Projects
             </h1>
@@ -186,31 +186,31 @@ export default function MainHome() {
 
             {/* Call & WhatsApp Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-7">
-              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 sm:flex-initial min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#00a4e4] hover:bg-[#008fce] text-white px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#00a4e4]/30 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
+              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 sm:flex-initial min-w-[150px] inline-flex items-center justify-center gap-2 bg-[#00a4e4] hover:bg-[#008fce] text-white px-5 sm:px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#00a4e4]/30 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
                 <i className="fa-solid fa-phone-volume text-base shrink-0"></i>
                 {PHONE_DISPLAY}
               </a>
-              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#25D366]/25 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial min-w-[150px] inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-5 sm:px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#25D366]/25 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
                 <i className="fa-brands fa-whatsapp text-lg shrink-0"></i>
                 +91 9560582493
               </a>
             </div>
 
             {/* Key Township Highlights Strip (3 Pillars) */}
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-5 border-t border-white/15 max-w-xl">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 sm:pt-5 border-t border-white/15 max-w-xl">
               <div className="flex flex-col">
                 <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">600 Acres</span>
-                <span className="text-white/70 text-[11px] sm:text-xs">Mega Township</span>
+                <span className="text-white/70 text-[10.5px] sm:text-xs">Mega Township</span>
               </div>
-              <div className="flex flex-col border-x border-white/15 px-2.5 sm:px-4">
+              <div className="flex flex-col border-x border-white/15 px-1.5 sm:px-4">
                 <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">9-Hole Golf</span>
-                <span className="text-white/70 text-[11px] sm:text-xs">Belvedere Club</span>
+                <span className="text-white/70 text-[10.5px] sm:text-xs">Belvedere Club</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[#38bdf8] font-black text-lg sm:text-xl md:text-2xl tracking-tight blink-price">
+                <span className="text-[#38bdf8] font-black text-[15px] sm:text-xl md:text-2xl tracking-tight blink-price whitespace-nowrap">
                   ₹ 1.30 Cr*
                 </span>
-                <span className="text-white/70 text-[11px] sm:text-xs">Starting Price</span>
+                <span className="text-white/70 text-[10.5px] sm:text-xs">Starting Price</span>
               </div>
             </div>
           </div>

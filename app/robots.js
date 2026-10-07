@@ -1,7 +1,7 @@
 import { SITE_URL } from '../lib/config'
 
 export default function robots() {
-  const baseUrl = SITE_URL || 'https://adanisantigramtownship.com'
+  const baseUrl = SITE_URL || 'https://adanishantigramtownship.com'
   return {
     rules: {
       userAgent: '*',

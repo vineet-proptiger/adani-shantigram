@@ -40,16 +40,16 @@ const nephilm = localFont({
 })
 
 export const metadata = {
-  metadataBase: new URL('https://adanisantigramtownship.com'), // Keeping URL as is unless specified
-  title: 'Adani Shantigram Township | Luxury 3, 4 & 5 BHK Apartments in Ahmedabad',
-  description: 'Adani Shantigram Township offers luxury 3, 4 & 5 BHK residences in Shantigram, Ahmedabad. A visionary township by Adani Realty spanning 600 acres. Enquire for details!',
+  metadataBase: new URL('https://adanishantigramtownship.com'),
+  title: 'Adani Shantigram Township | Luxury 3, 4 ,5 & 6 BHK Apartments in Ahmedabad',
+  description: 'Adani Shantigram Township offers luxury 3, 4 ,5 & 6 BHK residences in Shantigram, Ahmedabad. A visionary township by Adani Realty spanning 600 acres. Enquire for details!',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Adani Shantigram Township | Luxury 3, 4 & 5 BHK Apartments in Ahmedabad',
-    description: 'Adani Shantigram Township offers luxury 3, 4 & 5 BHK residences in Shantigram, Ahmedabad. A visionary township by Adani Realty spanning 600 acres. Enquire for details!',
-    url: 'https://adanisantigramtownship.com',
+    title: 'Adani Shantigram Township | Luxury 3, 4 ,5 & 6 BHK Apartments in Ahmedabad',
+    description: 'Adani Shantigram Township offers luxury 3, 4 ,5 & 6 BHK residences in Shantigram, Ahmedabad. A visionary township by Adani Realty spanning 600 acres. Enquire for details!',
+    url: 'https://adanishantigramtownship.com',
     siteName: 'Adani Shantigram Township',
     type: 'website',
   },
