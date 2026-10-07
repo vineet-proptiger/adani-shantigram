@@ -178,12 +178,12 @@ export default function ContactSection() {
             <div className="w-full">
               <div className="rounded-xl overflow-hidden shadow-2xl border border-white/20">
                 
-                {/* Dark Midnight Header */}
-                <div className="bg-[#050b24] p-4 sm:p-5 text-left border-b border-white/10">
+                {/* Brand Cyan Theme Header */}
+                <div className="bg-[#00a4e4] p-4 sm:p-5 text-left border-b border-white/20">
                   <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mb-1">
                     Book Site Visit Today
                   </h3>
-                  <p className="text-white/70 text-[11px] sm:text-xs">
+                  <p className="text-white/90 text-[11px] sm:text-xs">
                     Register now to get the best deal &amp; book your site visit
                   </p>
                 </div>
@@ -276,7 +276,7 @@ export default function ContactSection() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full mt-2 bg-[#050b24] hover:bg-[#00a4e4] text-white font-bold py-3.5 px-6 rounded-md text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xl disabled:opacity-70 cursor-pointer border border-white/10"
+                        className="w-full mt-2 bg-[#00a4e4] hover:bg-[#008fce] text-white font-extrabold py-3.5 px-6 rounded-md text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xl shadow-[#00a4e4]/30 hover:shadow-[#00a4e4]/50 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 cursor-pointer"
                       >
                         <i className="fa-solid fa-paper-plane text-xs"></i>
                         <span>{loading ? 'SUBMITTING...' : 'SUBMIT DETAILS'}</span>

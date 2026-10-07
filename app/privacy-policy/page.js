@@ -26,15 +26,21 @@ export default function PrivacyPolicy() {
         {/* Top Teal Accent Line */}
         <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, var(--color-gold), var(--color-gold-light), var(--color-gold))` }}></div>
 
-        <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-[80px]">
-          <Link href="/" className="flex items-center">
-            <img src={logoImages.main} alt={PROJECT_NAME} style={{ height: 'clamp(38px, 6vw, 54px)', width: 'auto', objectFit: 'contain' }} />
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between gap-3 h-[70px] sm:h-[80px]">
+          <Link href="/" className="flex items-center shrink-0">
+            <img 
+              src={logoImages.main} 
+              alt={PROJECT_NAME} 
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain" 
+            />
           </Link>
           <Link
             href="/"
-            className="text-[11px] sm:text-sm font-semibold px-4 py-2 sm:px-6 sm:py-2.5 rounded-full transition-all hover:opacity-90 btn-primary shadow-lg"
+            className="inline-flex items-center gap-1.5 shrink-0 whitespace-nowrap bg-[#00a4e4] hover:bg-[#008fce] text-white text-xs sm:text-sm font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 uppercase tracking-wide"
           >
-            ← BACK TO HOME
+            <span className="text-sm leading-none">&larr;</span>
+            <span className="hidden sm:inline">BACK TO HOME</span>
+            <span className="sm:hidden">HOME</span>
           </Link>
         </div>
       </nav>

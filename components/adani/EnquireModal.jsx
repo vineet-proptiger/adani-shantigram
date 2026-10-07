@@ -295,7 +295,7 @@ const EnquireModal = ({ isOpen, setIsOpen }) => {
               <button
                 type="submit" disabled={loading}
                 style={{
-                  background: '#00a4e4', color: '#111111', border: '2px solid #00a4e4',
+                  background: '#00a4e4', color: '#ffffff', border: '2px solid #00a4e4',
                   padding: '14px 48px', fontFamily: 'var(--font-poppins), Poppins, sans-serif', fontWeight: '700',
                   fontSize: '15px', letterSpacing: '0.05em', cursor: loading ? 'not-allowed' : 'pointer',
                   textTransform: 'uppercase', borderRadius: '8px',
@@ -303,8 +303,8 @@ const EnquireModal = ({ isOpen, setIsOpen }) => {
                   transition: 'all 0.3s ease',
                   boxShadow: '0 4px 15px rgba(0, 164, 228, 0.35)',
                 }}
-                onMouseEnter={e => { if (!loading) { e.currentTarget.style.background = '#111111'; e.currentTarget.style.color = '#33b8eb'; e.currentTarget.style.borderColor = '#111111' } }}
-                onMouseLeave={e => { if (!loading) { e.currentTarget.style.background = '#00a4e4'; e.currentTarget.style.color = '#111111'; e.currentTarget.style.borderColor = '#00a4e4' } }}
+                onMouseEnter={e => { if (!loading) { e.currentTarget.style.background = '#008fce'; e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.borderColor = '#008fce' } }}
+                onMouseLeave={e => { if (!loading) { e.currentTarget.style.background = '#00a4e4'; e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.borderColor = '#00a4e4' } }}
               >
                 {loading ? 'SENDING...' : 'SUBMIT'}
               </button>

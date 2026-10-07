@@ -162,7 +162,8 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Now', theme = 'dar
       <button
         type="submit"
         disabled={loading}
-        className="lead-form-btn"
+        className="lead-form-btn !text-white font-extrabold"
+        style={{ color: '#ffffff' }}
       >
         {loading ? 'Submitting...' : btnText}
       </button>

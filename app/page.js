@@ -79,10 +79,11 @@ const projects = [
     title: 'Shivalik Greenfield',
     slug: 'shivalik-greenfield',
     location: 'Shantigram - AHMEDABAD',
-    configuration: '3 BHK, 4 BHK',
+    configuration: '3 & 4 BHK',
     landParcel: '2.14 Acres',
     size: '2653 - 4548 Sqft',
     possessionIn: '2028',
+    bookingAmount: '25%',
     rera: 'RAA14879',
     price: '1.83 Cr*',
     status: 'NEW LAUNCH',
@@ -97,8 +98,9 @@ const projects = [
     landParcel: '2.5 Acres',
     size: '3071 - 3071 Sqft',
     possessionIn: '2027',
+    bookingAmount: '5%',
     rera: 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedaba',
-    price: '2.28 Cr',
+    price: '2.23 Cr*',
     status: 'NEW LAUNCH',
     image: '/home/banner7.webp'
   },
@@ -147,7 +149,7 @@ export default function MainHome() {
 
       {/* Hero Section */}
       <section id="hero" className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[680px] flex items-center justify-center py-16 sm:py-20 md:py-24">
-        {/* Background Image */}
+        {/* Background Image with Cinematic Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/home/home.webp"
@@ -156,31 +158,76 @@ export default function MainHome() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/45"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 mt-4 sm:mt-6 md:mt-0">
           
           {/* Left Content */}
           <div className="text-left max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white leading-[1.18] mb-5 sm:mb-7 drop-shadow-lg">
-              Welcome to Adani <br /> Shantigram Projects
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 bg-[#00a4e4]/20 border border-[#00a4e4]/40 backdrop-blur-md px-3.5 py-1.5 rounded-full mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#00a4e4] animate-pulse shrink-0"></span>
+              <span className="text-[#33b8eb] text-xs sm:text-[13px] font-bold uppercase tracking-wider">
+                Gujarat&apos;s Largest Integrated Township • SG Highway
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.15] mb-4 drop-shadow-md">
+              Welcome to Adani <br className="hidden sm:inline" />
+              <span className="text-[#33b8eb]">Shantigram</span> Projects
             </h1>
-            <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mt-3 sm:mt-0">
-              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#00a4e4] hover:bg-[#008fce] text-white px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-colors shadow-lg whitespace-nowrap">
+
+            {/* Subtitle */}
+            <p className="text-white/85 text-sm sm:text-base md:text-[17px] leading-relaxed mb-6 max-w-xl font-normal drop-shadow-sm">
+              Experience &apos;The Good Life&apos; across 600 acres of green sanctuary featuring a 9-hole golf course, the elite Belvedere Club, and resort-style luxury residences from ₹1.30 Cr*.
+            </p>
+
+            {/* Call & WhatsApp Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-7">
+              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 sm:flex-initial min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#00a4e4] hover:bg-[#008fce] text-white px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#00a4e4]/30 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
                 <i className="fa-solid fa-phone-volume text-base shrink-0"></i>
                 {PHONE_DISPLAY}
               </a>
-              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-colors shadow-lg whitespace-nowrap">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-xl text-sm sm:text-base font-bold transition-all shadow-lg shadow-[#25D366]/25 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">
                 <i className="fa-brands fa-whatsapp text-lg shrink-0"></i>
                 +91 9560582493
               </a>
             </div>
+
+            {/* Key Township Highlights Strip (3 Pillars) */}
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-5 border-t border-white/15 max-w-xl">
+              <div className="flex flex-col">
+                <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">600 Acres</span>
+                <span className="text-white/70 text-[11px] sm:text-xs">Mega Township</span>
+              </div>
+              <div className="flex flex-col border-x border-white/15 px-2.5 sm:px-4">
+                <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">9-Hole Golf</span>
+                <span className="text-white/70 text-[11px] sm:text-xs">Belvedere Club</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[#38bdf8] font-black text-lg sm:text-xl md:text-2xl tracking-tight blink-price">
+                  ₹ 1.30 Cr*
+                </span>
+                <span className="text-white/70 text-[11px] sm:text-xs">Starting Price</span>
+              </div>
+            </div>
           </div>
 
           {/* Right Content - Form Card */}
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-5">Book Site Visit Now.</h3>
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border-t-4 border-[#00a4e4] p-6 sm:p-7">
+            <div className="mb-4">
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-800 m-0">Book Site Visit</h3>
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  Instant Offer
+                </span>
+              </div>
+              <p className="text-slate-500 text-xs m-0">
+                ⚡ Get Instant Cost Sheet &amp; Floor Plans on WhatsApp
+              </p>
+            </div>
             <LeadForm formName="Home Page Banner Form" btnText="BOOK A SITE VISIT" theme="light" />
           </div>
           
@@ -243,50 +290,85 @@ export default function MainHome() {
                 {project.location}
               </p>
 
-              {/* Specs Grid */}
-              <div className="grid grid-cols-2 gap-y-2.5 gap-x-2 text-xs sm:text-sm mb-4 border-y border-slate-100 py-3.5">
-                <div>
-                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Configuration</p>
-                  <p className="text-slate-800 font-medium truncate">{project.configuration}</p>
+              {/* Specs Grid - Option 1: Modern Soft-Tile Blocks */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
+                {/* Configuration */}
+                <div className="bg-slate-50/90 border border-slate-200/70 rounded-xl p-2.5 sm:p-3 hover:border-slate-300 transition-colors">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <i className="fa-solid fa-bed text-[#00a4e4] text-[11px] shrink-0"></i>
+                    <span className="text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">Configuration</span>
+                  </div>
+                  <p className="text-slate-900 font-bold text-xs sm:text-[13.5px] truncate" title={project.configuration}>
+                    {project.configuration}
+                  </p>
                 </div>
-                <div>
-                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Land Parcel</p>
-                  <p className="text-slate-800 font-medium">{project.landParcel}</p>
+
+                {/* Land Parcel */}
+                <div className="bg-slate-50/90 border border-slate-200/70 rounded-xl p-2.5 sm:p-3 hover:border-slate-300 transition-colors">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <i className="fa-solid fa-layer-group text-[#00a4e4] text-[11px] shrink-0"></i>
+                    <span className="text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">Land Parcel</span>
+                  </div>
+                  <p className="text-slate-900 font-bold text-xs sm:text-[13.5px] truncate" title={project.landParcel}>
+                    {project.landParcel}
+                  </p>
                 </div>
-                <div>
-                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Size</p>
-                  <p className="text-slate-800 font-medium truncate">{project.size}</p>
+
+                {/* Size */}
+                <div className="bg-slate-50/90 border border-slate-200/70 rounded-xl p-2.5 sm:p-3 hover:border-slate-300 transition-colors">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <i className="fa-solid fa-maximize text-[#00a4e4] text-[11px] shrink-0"></i>
+                    <span className="text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">Size</span>
+                  </div>
+                  <p className="text-slate-900 font-bold text-xs sm:text-[13.5px] truncate" title={project.size}>
+                    {project.size}
+                  </p>
                 </div>
-                <div>
-                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Possession In</p>
-                  <p className="text-slate-800 font-medium">{project.possessionIn}</p>
+
+                {/* Possession In */}
+                <div className="bg-slate-50/90 border border-slate-200/70 rounded-xl p-2.5 sm:p-3 hover:border-slate-300 transition-colors">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <i className="fa-solid fa-calendar-check text-[#00a4e4] text-[11px] shrink-0"></i>
+                    <span className="text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">Possession In</span>
+                  </div>
+                  <p className="text-slate-900 font-bold text-xs sm:text-[13.5px] truncate" title={project.possessionIn}>
+                    {project.possessionIn}
+                  </p>
                 </div>
+
+                {/* Booking Amount (if any) */}
                 {project.bookingAmount && (
-                  <div className="col-span-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="text-slate-400 font-semibold uppercase tracking-wider">Booking Amount</span>
-                    <span className="text-slate-800 font-bold text-xs sm:text-sm">{project.bookingAmount}</span>
+                  <div className="col-span-2 bg-emerald-50/80 border border-emerald-200/70 rounded-xl px-3 py-2 flex items-center justify-between">
+                    <span className="text-emerald-800 text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <i className="fa-solid fa-circle-check text-emerald-600"></i> Booking Amount
+                    </span>
+                    <span className="text-emerald-950 font-bold text-xs sm:text-sm">{project.bookingAmount}</span>
                   </div>
                 )}
               </div>
 
-              {/* RERA Number */}
+              {/* RERA Number - Verified Official Badge Style */}
               {project.rera && (
-                <div className="mb-4 bg-slate-50 border border-slate-100 rounded-lg p-2 sm:p-2.5">
-                  <p className="text-slate-400 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider mb-0.5">RERA Number</p>
-                  <p className="text-slate-700 font-mono text-[10px] sm:text-[11px] leading-relaxed break-all font-medium">
+                <div className="mb-5 bg-gradient-to-r from-slate-50 via-slate-50 to-blue-50/30 border border-slate-200/80 rounded-xl p-2.5 sm:p-3">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <i className="fa-solid fa-shield-halved text-[#00a4e4] text-xs"></i>
+                    <span className="text-slate-600 text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider">RERA Registered</span>
+                  </div>
+                  <p className="text-slate-700 font-mono text-[10.5px] sm:text-[11px] leading-relaxed break-all font-medium">
                     {project.rera}
                   </p>
                 </div>
               )}
 
-              {/* Footer */}
-              <div className="flex items-center justify-between pt-1 mt-auto">
+              {/* Footer - Price & CTA */}
+              <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-auto">
                 <div>
-                  <p className="text-slate-500 text-[10.5px] sm:text-xs font-semibold uppercase tracking-wider mb-0.5">Starting From</p>
-                  <p className="text-[#00a4e4] text-lg sm:text-xl font-bold">₹ {project.price}</p>
+                  <p className="text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mb-0.5">Starting From</p>
+                  <p className="text-[#00a4e4] text-lg sm:text-xl md:text-2xl font-black tracking-tight">₹ {project.price}</p>
                 </div>
-                <div className="bg-[#1e293b] group-hover:bg-[#00a4e4] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors shadow-sm">
-                  Explore
+                <div className="inline-flex items-center gap-2 bg-[#1e293b] group-hover:bg-[#00a4e4] text-white px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md group-hover:shadow-[#00a4e4]/30">
+                  <span>Explore</span>
+                  <i className="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-0.5 transition-transform"></i>
                 </div>
               </div>
             </div>
@@ -332,12 +414,12 @@ export default function MainHome() {
           style={{ background: '#00a4e4', borderRight: '1px solid #0082b5' }}
         >
           <div className="enquire-icon-wrap flex items-center justify-center">
-            <svg width="22" height="22" fill="none" stroke="#111111" strokeWidth="2.2" viewBox="0 0 24 24">
+            <svg width="22" height="22" fill="none" stroke="#ffffff" strokeWidth="2.2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round"
                 d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
           </div>
-          <span className="text-[11px] sm:text-[12px] font-bold text-[#111111] mt-1 leading-none uppercase">Enquire</span>
+          <span className="text-[11px] sm:text-[12px] font-bold text-white mt-1 leading-none uppercase">Enquire</span>
         </button>
 
         <a
