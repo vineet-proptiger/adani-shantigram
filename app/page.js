@@ -197,17 +197,17 @@ export default function MainHome() {
             </div>
 
             {/* Key Township Highlights Strip (3 Pillars) */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 sm:pt-5 border-t border-white/15 max-w-xl">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-4 pt-4 sm:pt-5 border-t border-white/15 max-w-xl">
               <div className="flex flex-col">
                 <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">600 Acres</span>
                 <span className="text-white/70 text-[10.5px] sm:text-xs">Mega Township</span>
               </div>
-              <div className="flex flex-col border-x border-white/15 px-1.5 sm:px-4">
+              <div className="flex flex-col border-x border-white/15 px-1 sm:px-4">
                 <span className="text-white font-black text-sm sm:text-base md:text-lg tracking-tight">9-Hole Golf</span>
                 <span className="text-white/70 text-[10.5px] sm:text-xs">Belvedere Club</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[#38bdf8] font-black text-[15px] sm:text-xl md:text-2xl tracking-tight blink-price whitespace-nowrap">
+                <span className="text-[#38bdf8] font-black text-[18px] sm:text-xl md:text-2xl tracking-tight blink-price whitespace-nowrap">
                   ₹ 1.30 Cr*
                 </span>
                 <span className="text-white/70 text-[10.5px] sm:text-xs">Starting Price</span>
