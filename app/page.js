@@ -1,7 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import HomeNavbar from '../components/home/Navbar';
+import OverviewSection from '../components/home/OverviewSection';
+import ContactSection from '../components/home/ContactSection';
+import FooterSection from '../components/home/FooterSection';
+import MasterPlanSection from '../components/home/MasterPlanSection';
+import EnquireModal from '../components/adani/EnquireModal';
 import LeadForm from '../components/adani/LeadForm';
 import { PHONE_NUMBER, PHONE_DISPLAY, WHATSAPP_NUMBER } from '../lib/config';
 
@@ -9,46 +16,46 @@ import { PHONE_NUMBER, PHONE_DISPLAY, WHATSAPP_NUMBER } from '../lib/config';
 const projects = [
   {
     id: 1,
-    title: 'Adani Amora',
-    slug: 'adani-amora',
-    location: 'Shantigram - AHMEDABAD',
-    type: '3 BHK',
-    landArea: '1 Acres',
-    size: '1967 - 2054 Sqft',
-    totalUnits: '90',
-    possession: '2029',
-    rera: 'MAA16481/190226/301129',
-    price: '1.4 Cr',
-    status: 'NEW LAUNCH',
-    image: '/home/banner1.webp'
-  },
-  {
-    id: 2,
     title: 'Adani Belrosa',
     slug: 'adani-belrosa',
     location: 'Shantigram - AHMEDABAD',
-    type: '4 BHK, 5 BHK, 6 BHK',
-    landArea: '1.82 Acres',
-    size: '5450 - 12800 Sqft',
-    totalUnits: '108',
-    possession: '2030',
+    configuration: '4, 5 & 6 BHK',
+    landParcel: '1.82 Acres',
+    size: '1,967–2,054 Sq. Ft.',
+    possessionIn: '4 Years',
+    bookingAmount: '₹21 Lacs*',
     rera: 'PR/GJ/GANDHINAGAR/GANDHINAGAR/Ahmedabad Urban Development Authority/RAA15538/180725/310530',
-    price: '5.38 Cr',
+    price: '5.01 Cr*',
     status: 'UNDER CONSTRUCTION',
     image: '/home/banner2.webp'
+  },
+  {
+    id: 2,
+    title: 'Adani Amora',
+    slug: 'adani-amora',
+    location: 'Shantigram - AHMEDABAD',
+    configuration: '3 BHK',
+    landParcel: '1 Acres',
+    size: '1,967–2,054 Sq. Ft.',
+    possessionIn: '4 Years',
+    bookingAmount: '₹5.25 Lacs*',
+    rera: 'MAA16481/190226/301129',
+    price: '1.30 Cr*',
+    status: 'NEW LAUNCH',
+    image: '/home/banner1.webp'
   },
   {
     id: 3,
     title: 'Adani Embrace',
     slug: 'adani-embrace',
     location: 'Shantigram - AHMEDABAD',
-    type: '3 BHK',
-    landArea: '5 Towers (14 Floors)',
-    size: '1966 - 2164 Sqft',
-    totalUnits: '280 Units',
-    possession: 'Dec 2026',
+    configuration: '3 BHK',
+    landParcel: '5 Towers (14 Floors)',
+    size: '1,966–2,164 Sq. Ft.',
+    possessionIn: '18 Months',
+    bookingAmount: '₹5.25 Lacs*',
     rera: 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12526/251023',
-    price: '1.36 Cr',
+    price: '1.42 Cr*',
     status: 'UNDER CONSTRUCTION',
     image: '/home/banner3.webp'
   },
@@ -57,65 +64,58 @@ const projects = [
     title: 'Adani Ambrosia',
     slug: 'adani-ambrosia',
     location: 'Shantigram - AHMEDABAD',
-    type: '4 BHK',
-    landArea: '2.45 Acres',
-    size: '3211 - 3707 Sqft',
-    totalUnits: '156',
-    possession: '2026',
+    configuration: '4 BHK',
+    landParcel: '2.45 Acres',
+    size: '3,211–3,707 Sq. Ft.',
+    possessionIn: 'Sep-26',
+    bookingAmount: '₹5.25 Lacs*',
     rera: 'PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA10833/201022',
-    price: '2.45 Cr',
+    price: '2.45 Cr*',
     status: 'UNDER CONSTRUCTION',
     image: '/home/banner4.webp'
   },
-  /*
   {
     id: 5,
+    title: 'Shivalik Greenfield',
+    slug: 'shivalik-greenfield',
+    location: 'Shantigram - AHMEDABAD',
+    configuration: '3 BHK, 4 BHK',
+    landParcel: '2.14 Acres',
+    size: '2653 - 4548 Sqft',
+    possessionIn: '2028',
+    rera: 'RAA14879',
+    price: '1.83 Cr*',
+    status: 'NEW LAUNCH',
+    image: '/home/banner6.webp'
+  },
+  {
+    id: 6,
+    title: 'Shilp Skyline',
+    slug: 'shilp-skyline',
+    location: 'Shantigram - AHMEDABAD',
+    configuration: '4 BHK',
+    landParcel: '2.5 Acres',
+    size: '3071 - 3071 Sqft',
+    possessionIn: '2027',
+    rera: 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedaba',
+    price: '2.28 Cr',
+    status: 'NEW LAUNCH',
+    image: '/home/banner7.webp'
+  },
+  /*
+  {
+    id: 7,
     title: 'Adani Augusta',
     slug: 'adani-augusta',
     location: 'Tragad - AHMEDABAD',
-    type: '3 BHK',
-    landArea: '0.81 Acres',
+    configuration: '3 BHK',
+    landParcel: '0.81 Acres',
     size: '1382 - 1382 Sqft',
-    totalUnits: '80',
-    possession: '2026',
+    possessionIn: '2026',
     rera: 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12662/161123',
     price: '1.3 Cr',
     status: 'UNDER CONSTRUCTION',
     image: '/home/banner5.webp'
-  },
-  */
-  /*
-  {
-    id: 6,
-    title: 'Shivalik Greenfield',
-    slug: 'shivalik-greenfield',
-    location: 'Shantigram - AHMEDABAD',
-    type: '3 BHK, 4 BHK',
-    landArea: '2.14 Acres',
-    size: '2653 - 4548 Sqft',
-    totalUnits: '240',
-    possession: '2028',
-    rera: 'RAA14879',
-    price: '1.83 Cr',
-    status: 'NEW LAUNCH',
-    image: '/home/banner6.webp'
-  },
-  */
-  /*
-  {
-    id: 7,
-    title: 'Shilp Skyline',
-    slug: 'shilp-skyline',
-    location: 'Shantigram - AHMEDABAD',
-    type: '4 BHK',
-    landArea: '2.5 Acres',
-    size: '3071 - 3071 Sqft',
-    totalUnits: '256',
-    possession: '2027',
-    rera: 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedaba...',
-    price: '2.28 Cr',
-    status: 'NEW LAUNCH',
-    image: '/home/banner7.webp'
   },
   */
   /*
@@ -138,26 +138,15 @@ const projects = [
 ];
 
 export default function MainHome() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <main id="top" className="relative min-h-screen bg-[#f8fafc] flex flex-col items-center font-sans pb-12">
-      {/* Top Header - Sticky on small devices, floating badge on desktop */}
-      <header className="fixed top-0 left-0 w-full z-50 flex justify-center md:justify-start sm:absolute sm:top-0 sm:left-0 sm:w-full sm:z-20 sm:p-8 lg:px-12 pointer-events-none">
-        <button
-          onClick={scrollToTop}
-          type="button"
-          aria-label="Scroll to top"
-          className="w-full sm:w-auto bg-white sm:rounded-2xl shadow-md sm:shadow-[0_8px_30px_rgba(0,0,0,0.2)] py-3 sm:p-4 flex items-center justify-center sm:inline-flex border-b border-gray-200 sm:border-white/50 cursor-pointer transition-all active:opacity-90 pointer-events-auto"
-        >
-          <img src="/home/logo.webp" alt="Adani Logo" className="h-9 sm:h-10 lg:h-12 object-contain mix-blend-multiply" />
-        </button>
-      </header>
+    <main id="top" className="min-h-screen bg-[#f8fafc] flex flex-col">
+      {/* Top Header Navbar with Left Logo & Navigation Links */}
+      <HomeNavbar />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[600px] flex items-center justify-center pt-24 pb-16 md:py-0">
+      <section id="hero" className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[680px] flex items-center justify-center py-16 sm:py-20 md:py-24">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -167,54 +156,67 @@ export default function MainHome() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/45"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10 mt-8 md:mt-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 mt-4 sm:mt-6 md:mt-0">
           
           {/* Left Content */}
           <div className="text-left max-w-2xl">
-            <h1 className="text-[34px] sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.15] sm:leading-tight mb-6 drop-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white leading-[1.18] mb-5 sm:mb-7 drop-shadow-lg">
               Welcome to Adani <br /> Shantigram Projects
             </h1>
-            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mt-4 sm:mt-0">
-              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-[#00a4e4] hover:bg-[#008fce] text-white px-2 sm:px-6 py-3 rounded-lg text-[15px] sm:text-lg font-bold transition-colors shadow-lg whitespace-nowrap">
-                <i className="fa-solid fa-phone-volume text-sm sm:text-lg shrink-0"></i>
+            <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mt-3 sm:mt-0">
+              <a href={`tel:${PHONE_NUMBER}`} className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#00a4e4] hover:bg-[#008fce] text-white px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-colors shadow-lg whitespace-nowrap">
+                <i className="fa-solid fa-phone-volume text-base shrink-0"></i>
                 {PHONE_DISPLAY}
               </a>
-              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white px-2 sm:px-6 py-3 rounded-lg text-[15px] sm:text-lg font-bold transition-colors shadow-lg whitespace-nowrap">
-                <i className="fa-brands fa-whatsapp text-lg sm:text-xl shrink-0"></i>
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-colors shadow-lg whitespace-nowrap">
+                <i className="fa-brands fa-whatsapp text-lg shrink-0"></i>
                 +91 9560582493
               </a>
             </div>
           </div>
 
           {/* Right Content - Form Card */}
-          <div className="w-full max-w-md bg-white rounded-xl shadow-2xl p-6 sm:p-8">
-            <h3 className="text-xl font-bold text-slate-800 mb-6">Book Site Visit Now.</h3>
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-5">Book Site Visit Now.</h3>
             <LeadForm formName="Home Page Banner Form" btnText="BOOK A SITE VISIT" theme="light" />
           </div>
           
         </div>
       </section>
 
-      {/* Projects Section */}
-      <div className="pt-12 sm:pt-16 w-full flex flex-col items-center px-4 sm:px-6">
-        <div className="w-full max-w-7xl text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-2 sm:mb-3">
+      {/* 2nd Section: Dedicated Overview matching adani slug */}
+      <OverviewSection setIsOpen={setIsModalOpen} />
+
+      {/* Projects Section - 1 line me 2 cards */}
+      <section id="projects" className="py-16 sm:py-20 md:py-24 w-full flex flex-col items-center px-4 sm:px-6">
+        <div className="w-full max-w-6xl text-center mb-10 sm:mb-14">
+          <span className="text-[#00a4e4] text-xs sm:text-sm font-bold uppercase tracking-[0.22em] block mb-2">
+            Signature Developments
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
             Exclusive Premium Projects
           </h2>
-          <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Explore handpicked ultra-luxury residences designed for the Good Life.
           </p>
         </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+        {/* 1 Line me 2 Cards: grid-cols-1 md:grid-cols-2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto">
         {projects.map((project) => (
-          <Link href={`/${project.slug}`} key={project.id} className="group flex flex-col h-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden hover:shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+          /* Commented slug navigation - Opens Enquire Popup instead */
+          /* <Link href={`/${project.slug}`} key={project.id}> */
+          <div 
+            key={project.id} 
+            onClick={() => setIsModalOpen(true)}
+            className="group flex flex-col h-full bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden hover:shadow-[0_12px_35px_rgba(0,0,0,0.12)] transition-all duration-300 border border-slate-100 hover:-translate-y-1 cursor-pointer"
+          >
             
             {/* Image Container */}
-            <div className="relative h-64 w-full bg-slate-200 overflow-hidden">
+            <div className="relative h-64 sm:h-72 w-full bg-slate-200 overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
@@ -232,40 +234,46 @@ export default function MainHome() {
             </div>
 
             {/* Content Container */}
-            <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-[#00a4e4] transition-colors">
+            <div className="p-6 sm:p-7 flex flex-col flex-grow">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1.5 group-hover:text-[#00a4e4] transition-colors">
                 {project.title}
-              </h2>
-              <p className="text-slate-500 text-sm font-medium mb-5 flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#d31168]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              </h3>
+              <p className="text-slate-500 text-xs sm:text-sm font-medium mb-4 flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-[#d31168]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 {project.location}
               </p>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm mb-4 border-y border-slate-100 py-4">
+              <div className="grid grid-cols-2 gap-y-2.5 gap-x-2 text-xs sm:text-sm mb-4 border-y border-slate-100 py-3.5">
                 <div>
-                  <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Type</p>
-                  <p className="text-slate-800 font-medium truncate">{project.type}</p>
+                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Configuration</p>
+                  <p className="text-slate-800 font-medium truncate">{project.configuration}</p>
                 </div>
                 <div>
-                  <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Land Area</p>
-                  <p className="text-slate-800 font-medium">{project.landArea}</p>
+                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Land Parcel</p>
+                  <p className="text-slate-800 font-medium">{project.landParcel}</p>
                 </div>
                 <div>
-                  <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Total Units</p>
-                  <p className="text-slate-800 font-medium">{project.totalUnits}</p>
+                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Size</p>
+                  <p className="text-slate-800 font-medium truncate">{project.size}</p>
                 </div>
                 <div>
-                  <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Possession</p>
-                  <p className="text-slate-800 font-medium">{project.possession}</p>
+                  <p className="text-slate-400 text-[11px] font-semibold uppercase tracking-wider">Possession In</p>
+                  <p className="text-slate-800 font-medium">{project.possessionIn}</p>
                 </div>
+                {project.bookingAmount && (
+                  <div className="col-span-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <span className="text-slate-400 font-semibold uppercase tracking-wider">Booking Amount</span>
+                    <span className="text-slate-800 font-bold text-xs sm:text-sm">{project.bookingAmount}</span>
+                  </div>
+                )}
               </div>
 
               {/* RERA Number */}
               {project.rera && (
-                <div className="mb-5 bg-slate-50 border border-slate-100 rounded-lg p-2.5">
-                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-0.5">RERA Number</p>
-                  <p className="text-slate-700 font-mono text-[11px] leading-relaxed break-all font-medium">
+                <div className="mb-4 bg-slate-50 border border-slate-100 rounded-lg p-2 sm:p-2.5">
+                  <p className="text-slate-400 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider mb-0.5">RERA Number</p>
+                  <p className="text-slate-700 font-mono text-[10px] sm:text-[11px] leading-relaxed break-all font-medium">
                     {project.rera}
                   </p>
                 </div>
@@ -274,36 +282,81 @@ export default function MainHome() {
               {/* Footer */}
               <div className="flex items-center justify-between pt-1 mt-auto">
                 <div>
-                  <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-0.5">Starting From</p>
-                  <p className="text-[#00a4e4] text-xl font-bold">₹ {project.price}</p>
+                  <p className="text-slate-500 text-[10.5px] sm:text-xs font-semibold uppercase tracking-wider mb-0.5">Starting From</p>
+                  <p className="text-[#00a4e4] text-lg sm:text-xl font-bold">₹ {project.price}</p>
                 </div>
-                <div className="bg-[#1e293b] group-hover:bg-[#5c2483] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors shadow-sm">
+                <div className="bg-[#1e293b] group-hover:bg-[#00a4e4] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors shadow-sm">
                   Explore
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
+          /* </Link> */
         ))}
 
-      </div>
-    </div>
-    
-    <footer className="w-full bg-white border-t border-slate-200 mt-16 py-12 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-6 font-sans">
-          About Adani Realty
-        </h2>
-        <div className="text-slate-600 text-[15px] leading-[1.8] font-normal space-y-6 text-justify">
-          <p>
-            Adani Realty is the real estate arm of one of India's leading infrastructure and development entities – Adani Group. With resolute commitments to 'Nation Building' and 'Growth with Goodness', we are developing real estate projects in the most promising destinations, integrating design aesthetics with cutting-edge construction technology. We have developed close to 33 Mn. Sq. Ft. and approximately 144 Mn. Sq. Ft. of real estate space is under development, including residential, commercial, and social club projects across Ahmedabad, Mumbai, Pune and Gurugram.
-          </p>
-          <p>
-            Within a decade, Adani Realty has achieved exponential growth in the residential and commercial sectors. We have helped numerous families find their dream houses where they are happily residing. We have also created state-of-the-art commercial spaces with futuristic setups for companies to work, feel empowered and flourish. We have some of the most sought-after award-winning commercial and retail spaces which promise craftsmanship and superior design by Adani Realty.
-          </p>
         </div>
-      </div>
-    </footer>
+      </section>
 
+      {/* Master Plan & Floor Plan Section (interactive tabs) */}
+      <MasterPlanSection setIsOpen={setIsModalOpen} />
+
+      {/* Contact Us Section (matches screenshot 2) */}
+      <ContactSection />
+
+      {/* Footer Section (matches screenshot 1 with theme color) */}
+      <FooterSection />
+
+      {/* Interactive Enquire Modal */}
+      <EnquireModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+
+      {/* Mobile sticky bottom bar (Call Us, Enquire Now, WhatsApp) */}
+      <div className="sticky-bottom-bar">
+        <a
+          id="mobile-call"
+          href={`tel:${PHONE_NUMBER}`}
+          className="flex-1 flex flex-col items-center justify-center py-2.5 px-1"
+          style={{ background: '#1a1a1a', borderRight: '1px solid #333' }}
+        >
+          <div className="phone-icon-wrap flex items-center justify-center">
+            <svg width="20" height="20" fill="#ffffff" viewBox="0 0 24 24">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
+            </svg>
+          </div>
+          <span className="text-[11px] sm:text-[12px] font-bold text-white mt-1 leading-none">Call Us</span>
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          className="flex-1 flex flex-col items-center justify-center py-2.5 px-1 cursor-pointer"
+          style={{ background: '#00a4e4', borderRight: '1px solid #0082b5' }}
+        >
+          <div className="enquire-icon-wrap flex items-center justify-center">
+            <svg width="22" height="22" fill="none" stroke="#111111" strokeWidth="2.2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <span className="text-[11px] sm:text-[12px] font-bold text-[#111111] mt-1 leading-none uppercase">Enquire</span>
+        </button>
+
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi,%20I%20am%20interested%20in%20Adani%20Shantigram%20Projects.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex flex-col items-center justify-center py-2.5 px-1"
+          style={{ background: '#25D366' }}
+        >
+          <div className="whatsapp-icon-wrap flex items-center justify-center">
+            <svg width="22" height="22" fill="#ffffff" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+          </div>
+          <span className="text-[11px] sm:text-[12px] font-bold text-white mt-1 leading-none">WhatsApp</span>
+        </a>
+      </div>
+
+      <div className="h-16 lg:hidden" />
     </main>
   );
 }

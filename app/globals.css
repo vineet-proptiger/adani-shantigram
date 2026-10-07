@@ -180,7 +180,7 @@
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
@@ -188,7 +188,7 @@
     font-family: var(--font-sans), 'Open Sans', sans-serif;
     color: var(--color-text);
     background-color: #ffffff;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
