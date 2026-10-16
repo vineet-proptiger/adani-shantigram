@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PHONE_NUMBER, PHONE_DISPLAY } from '../../lib/config';
+import { logoImages } from '../../lib/images';
 
 export default function HomeNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,9 +25,9 @@ export default function HomeNavbar() {
             {/* Left Corner Logo */}
             <Link href="#top" className="flex items-center shrink-0 py-2">
               <img
-                src="/home/logo.webp"
+                src={logoImages.main}
                 alt="Adani Realty"
-                className="h-9 sm:h-12 w-auto object-contain mix-blend-multiply"
+                className="h-9 sm:h-12 w-auto object-contain"
               />
             </Link>
 
